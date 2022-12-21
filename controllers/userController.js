@@ -60,10 +60,11 @@ const usuariosDelete = async (req, res = response) => {
 	//Borrado físico
 	//const usuario = await Usuario.findByIdAndDelete(id)
 
-	await Usuario.findByIdAndUpdate(id, { estado: false });
+	const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
 
 	res.json({
 		msg: "Usuario eliminado con éxito",
+		usuario,
 	});
 };
 
