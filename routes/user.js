@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { check } = require("express-validator");
 
-const { validarCampos, validarJWT, esAdminRole, tieneRole } = require("../middlewares/index");
+const { validarCampos, validarJWT, esAdminRole, tieneRole } = require("../middlewares");
 
 const { esRoleValido, existeEmail, existeId } = require("../helpers/db-validators");
 
