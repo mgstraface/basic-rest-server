@@ -66,6 +66,7 @@ const buscarProductos = async (termino = '', res = response) => {
 	const esMongoID = ObjectId.isValid(termino);
 
 	if (esMongoID) {
+		//populate añadido para que muestre el nombre de la categoría y el nombre del usuario que lo creó
 		const [productoPorId, productosPorCategoria] = await Promise.all([
 			Producto.findById(termino)
 				.populate({ path: 'usuario', select: 'nombre' })
