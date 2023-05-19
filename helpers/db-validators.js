@@ -28,11 +28,30 @@ const existeCategoriaId = async (id) => {
 	}
 };
 
+/**
+ * Productos
+ */
+
 const existeProductoId = async (id) => {
+	//verifica si existe el producto en la db
 	const producto = await Producto.findById(id);
 	if (!producto) {
 		throw new Error(`El id ${id} no existe en la base de datos`);
 	}
+};
+
+/**
+ * Validar colecciones permitidas
+ */
+const coleccionesPermitidas = (coleccion = '', colecciones = []) => {
+	const incluida = colecciones.includes(coleccion);
+
+	if (!incluida) {
+		throw new Error(
+			`La colección ${coleccion} no existe en la base de datos. Las colecciones permitidas son: ${colecciones}`
+		);
+	}
+	return true;
 };
 
 module.exports = {
@@ -41,4 +60,5 @@ module.exports = {
 	existeId,
 	existeCategoriaId,
 	existeProductoId,
+	coleccionesPermitidas,
 };
