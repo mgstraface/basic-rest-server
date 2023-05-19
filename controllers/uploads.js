@@ -128,7 +128,11 @@ const actualizarImagenCloudinary = async (req, res = response) => {
 			break;
 
 		default:
-			return res.status(500).json({ msg: 'La concha del pato' });
+			return res
+				.status(500)
+				.json({
+					msg: 'Ha ocurrido un error en el servidor, estamos trabajando para solucionarlo.',
+				});
 	}
 	try {
 		// Limpiar imágenes previas
